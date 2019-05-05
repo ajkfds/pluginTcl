@@ -11,9 +11,17 @@ namespace pluginTcl
         public void Initialize()
         {
             // register filetype
-//            FileTypes.CSourceFile fileType = new FileTypes.CSourceFile();
-//            codeEditor.Global.FileTypes.Add(fileType.ID, fileType);
+            {
+                FileTypes.TclFile fileType = new FileTypes.TclFile();
+                codeEditor.Global.FileTypes.Add(fileType.ID, fileType);
+            }
+
+            // append menu items
+            System.Windows.Forms.ContextMenuStrip menu = codeEditor.Global.Controller.NavigatePanel.GetContextMenuStrip();
+//            menu.Items.Add(Global.SetupForm.icarusVerilogSimulationToolStripMenuItem);
         }
-        public string Id { get { return "Tcl"; } }
+        public string Id { get { return StaticID; } }
+
+        public static string StaticID = "Tcl";
     }
 }
