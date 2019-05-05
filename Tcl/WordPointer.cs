@@ -167,11 +167,11 @@ namespace pluginTcl.Tcl
             index = nextIndex;
             FetchNext(Document, ref index, out length, out nextIndex);
 
-            while (!Eof)
-            {
-                index = nextIndex;
-                FetchNext(Document, ref index, out length, out nextIndex);
-            }
+            //while (!Eof)
+            //{
+            //    index = nextIndex;
+            //    FetchNext(Document, ref index, out length, out nextIndex);
+            //}
         }
 
         public bool Eof
@@ -212,8 +212,15 @@ namespace pluginTcl.Tcl
 
         public static void FetchNext(ajkControls.Document document,ref int index, out int length, out int nextIndex)
         {
+            if(document.GetCharAt(index) == '\n')
+            {
+                nextIndex = index + 1;
+                length = 1;
+                return;
+            }
+
             // skip blanks before word
-            while (document.Length > index && document.GetCharAt(index) == ' ')
+             while (document.Length > index && document.GetCharAt(index) == ' ')
             {
                 index++;
             }
@@ -228,6 +235,7 @@ namespace pluginTcl.Tcl
             nextIndex = index;
             while (document.Length > nextIndex && document.GetCharAt(nextIndex) != ' ')
             {
+                if (document.GetCharAt(nextIndex) == '\n') break;
                 nextIndex++;
             }
             length = nextIndex - index;
