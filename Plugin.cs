@@ -8,7 +8,7 @@ namespace pluginTcl
 {
     public class Plugin : codeEditorPlugin.IPlugin
     {
-        public void Initialize()
+        public bool Register()
         {
             // register filetype
             {
@@ -18,7 +18,12 @@ namespace pluginTcl
 
             // append menu items
             System.Windows.Forms.ContextMenuStrip menu = codeEditor.Global.Controller.NavigatePanel.GetContextMenuStrip();
-//            menu.Items.Add(Global.SetupForm.icarusVerilogSimulationToolStripMenuItem);
+            //            menu.Items.Add(Global.SetupForm.icarusVerilogSimulationToolStripMenuItem);
+            return true;
+        }
+        public bool Initialize()
+        {
+            return true;
         }
         public string Id { get { return StaticID; } }
 
