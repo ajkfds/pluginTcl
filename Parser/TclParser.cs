@@ -20,7 +20,7 @@ namespace pluginTcl.Parser
 
         public override ParsedDocument ParsedDocument { get { return parsedDocument as codeEditor.CodeEditor.ParsedDocument; } }
 
-        public override void Parse()
+        public override void Parse(ParseMode parseMode)
         {
             word.GetFirst();
             while (!word.Eof)
