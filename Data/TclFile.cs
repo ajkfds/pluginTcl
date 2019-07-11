@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using codeEditor.CodeEditor;
+using codeEditor.Data;
 
 namespace pluginTcl.Data
 {
@@ -111,9 +113,9 @@ namespace pluginTcl.Data
             return new NavigatePanel.TclFileNode(ID, Project);
         }
 
-        public virtual codeEditor.CodeEditor.DocumentParser CreateDocumentParser(codeEditor.CodeEditor.CodeDocument document, string id, codeEditor.Data.Project project)
+        public virtual codeEditor.CodeEditor.DocumentParser CreateDocumentParser(codeEditor.CodeEditor.CodeDocument document, string id, codeEditor.Data.Project project, DocumentParser.ParseModeEnum parseMode)
         {
-            return new Parser.TclParser(document, id, project);
+            return new Parser.TclParser(document, id, project,parseMode);
         }
 
 
@@ -321,7 +323,6 @@ namespace pluginTcl.Data
             if (CodeDocument.GetCharAt(prevInex) != 'd') return false;
             return true;
         }
-
     }
 }
 

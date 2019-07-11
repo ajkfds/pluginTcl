@@ -9,7 +9,7 @@ namespace pluginTcl.Parser
 {
     public class TclParser : codeEditor.CodeEditor.DocumentParser
     {
-        public TclParser(codeEditor.CodeEditor.CodeDocument document, string id, codeEditor.Data.Project project) : base(document, id, project)
+        public TclParser(codeEditor.CodeEditor.CodeDocument document, string id, codeEditor.Data.Project project, codeEditor.CodeEditor.DocumentParser.ParseModeEnum parseMode) : base(document, id, project,parseMode)
         {
             parsedDocument = new Tcl.ParsedDocument(project, id, document.EditID);
             word = new Tcl.WordScanner(this.document, parsedDocument,false);
@@ -20,7 +20,7 @@ namespace pluginTcl.Parser
 
         public override ParsedDocument ParsedDocument { get { return parsedDocument as codeEditor.CodeEditor.ParsedDocument; } }
 
-        public override void Parse(ParseMode parseMode)
+        public override void Parse()
         {
             word.GetFirst();
             while (!word.Eof)
