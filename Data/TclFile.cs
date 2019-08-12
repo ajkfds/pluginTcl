@@ -61,11 +61,7 @@ namespace pluginTcl.Data
         {
             get
             {
-                if (!Project.ProjectProperties.ContainsKey(Plugin.StaticID))
-                {
-                    Project.ProjectProperties.Add(Plugin.StaticID, new ProjectProperty(Project));
-                }
-                return Project.ProjectProperties[Plugin.StaticID] as ProjectProperty;
+                return Project.GetProjectProperty(Plugin.StaticID) as ProjectProperty;
             }
         }
 
