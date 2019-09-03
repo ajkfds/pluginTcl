@@ -6,17 +6,17 @@ using System.Threading.Tasks;
 
 namespace pluginTcl.Tcl
 {
-    public class Bracket : IArgument
+    public class Quote : IArgument
     {
-        public static Bracket ParseCreate(WordScanner word, ParsedDocument parsedDocument)
+        public static Quote ParseCreate(WordScanner word, ParsedDocument parsedDocument)
         {
-            Bracket bracket = new Bracket();
+            Quote quote = new Quote();
             word.Color(CodeDrawStyle.ColorType.Keyword);
             word.MoveNext();
 
             while (!word.Eof)
             {
-                if (word.Text == "]")
+                if (word.Text == "\"")
                 {
                     word.Color(CodeDrawStyle.ColorType.Keyword);
                     word.MoveNext();
@@ -24,8 +24,7 @@ namespace pluginTcl.Tcl
                 }
                 word.MoveNext();
             }
-            return bracket;
-
+            return quote;
         }
     }
 }

@@ -8,5 +8,24 @@ namespace pluginTcl.Tcl
 {
     public class Brace : IArgument
     {
+        public static Brace ParseCreate(WordScanner word, ParsedDocument parsedDocument)
+        {
+            Brace brace = new Brace();
+            word.Color(CodeDrawStyle.ColorType.Keyword);
+            word.MoveNext();
+
+            while (!word.Eof)
+            {
+                if (word.Text == "}")
+                {
+                    word.Color(CodeDrawStyle.ColorType.Keyword);
+                    word.MoveNext();
+                    break;
+                }
+                word.MoveNext();
+            }
+            return brace;
+        }
+
     }
 }

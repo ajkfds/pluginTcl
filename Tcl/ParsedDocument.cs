@@ -41,6 +41,8 @@ namespace pluginTcl.Tcl
         public int ErrorCount = 0;
         public int WarningCount = 0;
 
+
+        // https://www.tcl.tk/man/tcl7.5/
         /*
 
         [] : brackets
@@ -54,10 +56,30 @@ namespace pluginTcl.Tcl
         alart backspace feed newline carriage return vertical tab
         oxU
 
-
         */
         public List<Tcl.Command> Commands = new List<Command>();
 
+        public void Parse(WordScanner word)
+        {
+            while (!word.Eof)
+            {
+                if(word.Text == "\n" || word.Text == ";")
+                {
+                    word.MoveNext();
+                }
+                if (word.Text.StartsWith("#"))
+                {
+                    Tcl.Comment comment = Tcl.Comment.ParseCreate(word, this);
+                }
+                else
+                {
+                    Tcl.Command command = Tcl.Command.ParseCreate(word, this);
+                    if (command != null) Commands.Add(command);
+                }
+            }
+        }
+
+        public Dictionary<string, Variable> Variables = new Dictionary<string, Variable>();
 
         public List<codeEditor.CodeEditor.PopupItem> GetPopupItems(int index, string text)
         {

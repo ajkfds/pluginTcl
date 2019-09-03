@@ -56,11 +56,24 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Tcl\Argument.cs" />
+    <Compile Include="Tcl\ArrayVariable.cs" />
     <Compile Include="Tcl\Command.cs" />
+    <Compile Include="Tcl\Commands\appendParser.cs" />
+    <Compile Include="Tcl\Commands\CommandParser.cs" />
+    <Compile Include="Tcl\Commands\forParser.cs" />
+    <Compile Include="Tcl\Commands\setCommand.cs" />
+    <Compile Include="Tcl\Comment.cs" />
     <Compile Include="Tcl\IArgument.cs" />
+    <Compile Include="Tcl\List.cs" />
     <Compile Include="Tcl\ParsedDocument.cs" />
     <Compile Include="Tcl\Brace.cs" />
     <Compile Include="Tcl\Bracket.cs" />
+    <Compile Include="Tcl\Quote.cs" />
+    <Compile Include="Tcl\ScalarVariable.cs" />
+    <Compile Include="Tcl\Text.cs" />
+    <Compile Include="Tcl\Variable.cs" />
+    <Compile Include="Tcl\VariableReference.cs" />
     <Compile Include="Tcl\Word.cs" />
     <Compile Include="Tcl\WordPointer.cs" />
     <Compile Include="Tcl\WordReference.cs" />

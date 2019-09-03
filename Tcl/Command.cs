@@ -9,33 +9,43 @@ namespace pluginTcl.Tcl
     public class Command
     {
         protected Command() { }
-        public static Command ParseCreate(WordScanner word)
+
+        public List<IArgument> Arguments = new List<IArgument>();
+        public static Command ParseCreate(WordScanner word, ParsedDocument parsedDocument)
         {
-            // skip \n
-            while(!word.Eof && word.Text == "\n")
+            if (BuiltInCommandParsers.ContainsKey(word.Text))
             {
-                word.MoveNext();
+                Command bcommand = BuiltInCommandParsers[word.Text](word, parsedDocument);
+                return bcommand;
             }
 
-            if (word.Eof) return null;
-
-
             Command command = new Command();
-
             command.Name = word.Text;
             word.Color(CodeDrawStyle.ColorType.Keyword);
             word.MoveNext();
 
             while (!word.Eof)
             {
-                word.MoveNext();
-                if (word.Text == "\n") break;
+                if (word.Text == "\n" || word.Text == ";")
+                {
+                    word.MoveNext();
+                    break;
+                }
+
+                IArgument argument = Argument.ParseCreate(word, parsedDocument);
+                if (argument != null) command.Arguments.Add(argument);
             }
 
             return command;
         }
 
-        public string Name { get; protected set; }
+        public virtual string Name { get; protected set; }
 
+        // https://www.tcl.tk/man/tcl7.5/TclCmd/contents.html
+        public static Dictionary<string, Func<WordScanner, ParsedDocument, Command>> BuiltInCommandParsers
+            = new Dictionary<string, Func<WordScanner, ParsedDocument, Command>>
+                {
+                    {"set", new Func<WordScanner, ParsedDocument, Command>((w, p) => {return Commands.setCommand.ParseCreate(w, p); }) }
+                };
     }
 }

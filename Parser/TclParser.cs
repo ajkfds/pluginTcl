@@ -23,11 +23,7 @@ namespace pluginTcl.Parser
         public override void Parse()
         {
             word.GetFirst();
-            while (!word.Eof)
-            {
-                Tcl.Command command = Tcl.Command.ParseCreate(word);
-                if (command != null) parsedDocument.Commands.Add(command);
-            }
+            parsedDocument.Parse(word);
             word.Dispose();
             word = null;
         }
