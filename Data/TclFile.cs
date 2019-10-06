@@ -42,6 +42,10 @@ namespace pluginTcl.Data
 
         private volatile bool reloadRequested = false;
         public bool ReloadRequested { get { return reloadRequested; } set { reloadRequested = value; } }
+        public bool IsCodeDocumentCashed
+        {
+            get { if (document == null) return false; else return true; }
+        }
         public void Reload()
         {
             CodeDocument = null;
