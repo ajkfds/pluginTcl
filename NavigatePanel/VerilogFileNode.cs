@@ -53,7 +53,7 @@ namespace pluginTcl.NavigatePanel
 
         public override void Selected()
         {
-            codeEditor.Global.Controller.CodeEditor.SetTextFile(ITextFile);
+            codeEditor.Controller.CodeEditor.SetTextFile(ITextFile);
         }
 
         public override void Update()
