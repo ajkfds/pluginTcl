@@ -8,21 +8,20 @@ using codeEditor.Data;
 
 namespace pluginTcl.Data
 {
-    public class TclFile : codeEditor.Data.File, codeEditor.Data.ITextFile
+    public class TclFile : codeEditor.Data.TextFile
     {
-        public new static TclFile Create(string relativePath, codeEditor.Data.Project project)
+        public static TclFile Create(string relativePath, codeEditor.Data.Project project)
         {
-            string id = GetID(relativePath, project);
-            if (project.IsRegistered(id))
-            {
-                TclFile item = project.GetRegisterdItem(id) as TclFile;
-                project.RegisterProjectItem(item);
-                return item;
-            }
+            //string id = GetID(relativePath, project);
+            //if (project.IsRegistered(id))
+            //{
+            //    TclFile item = project.GetRegisterdItem(id) as TclFile;
+            //    project.RegisterProjectItem(item);
+            //    return item;
+            //}
 
             TclFile fileItem = new TclFile();
             fileItem.Project = project;
-            fileItem.ID = id;
             fileItem.RelativePath = relativePath;
             if (relativePath.Contains('\\'))
             {
@@ -34,25 +33,10 @@ namespace pluginTcl.Data
             }
             fileItem.ParseRequested = true;
 
-            project.RegisterProjectItem(fileItem);
+            //project.RegisterProjectItem(fileItem);
             return fileItem;
         }
         private volatile bool parseRequested = false;
-        public bool ParseRequested { get { return parseRequested; } set { parseRequested = value; } }
-
-        private volatile bool reloadRequested = false;
-        public bool ReloadRequested { get { return reloadRequested; } set { reloadRequested = value; } }
-        public bool IsCodeDocumentCashed
-        {
-            get { if (document == null) return false; else return true; }
-        }
-        public void Reload()
-        {
-            CodeDocument = null;
-        }
-
-        public codeEditor.CodeEditor.ParsedDocument ParsedDocument { get; set; }
-
         public Tcl.ParsedDocument TclParsedDocument
         {
             get
@@ -69,38 +53,8 @@ namespace pluginTcl.Data
             }
         }
 
-        private codeEditor.CodeEditor.CodeDocument document = null;
-        public codeEditor.CodeEditor.CodeDocument CodeDocument
-        {
-            get
-            {
-                if (document == null)
-                {
-                    try
-                    {
-                        using (System.IO.StreamReader sr = new System.IO.StreamReader(Project.GetAbsolutePath(RelativePath)))
-                        {
-                            document = new CodeEditor.CodeDocument();
-                            string text = sr.ReadToEnd();
-                            document.Replace(0, 0, 0, text);
-                            document.ParentID = ID;
-                            document.ClearHistory();
-                        }
-                    }
-                    catch
-                    {
-                        document = null;
-                    }
-                }
-                return document;
-            }
-            protected set
-            {
-                document = value;
-            }
-        }
 
-        public ajkControls.CodeDrawStyle DrawStyle
+        public new ajkControls.CodeDrawStyle DrawStyle
         {
             get
             {
@@ -110,53 +64,53 @@ namespace pluginTcl.Data
 
         public override codeEditor.NavigatePanel.NavigatePanelNode CreateNode()
         {
-            return new NavigatePanel.TclFileNode(ID, Project);
+            return new NavigatePanel.TclFileNode(this, Project);
         }
 
-        public virtual codeEditor.CodeEditor.DocumentParser CreateDocumentParser(codeEditor.CodeEditor.CodeDocument document, string id, codeEditor.Data.Project project, DocumentParser.ParseModeEnum parseMode)
+        public new virtual codeEditor.CodeEditor.DocumentParser CreateDocumentParser(DocumentParser.ParseModeEnum parseMode)
         {
-            return new Parser.TclParser(document, id, project,parseMode);
+            return new Parser.TclParser(this,parseMode);
         }
 
 
         public override void Update()
         {
-            if (TclParsedDocument == null)
-            {
-                items.Clear();
-                return;
-            }
+            //if (TclParsedDocument == null)
+            //{
+            //    items.Clear();
+            //    return;
+            //}
 
-            List<string> ids = new List<string>();
+            //List<string> ids = new List<string>();
 
-            // update
+            //// update
 
-            // remove unused items
-            List<codeEditor.Data.Item> removeItems = new List<codeEditor.Data.Item>();
-            foreach (codeEditor.Data.Item item in items.Values)
-            {
-                if (!ids.Contains(item.ID)) removeItems.Add(item);
-            }
-            foreach (codeEditor.Data.Item item in removeItems)
-            {
-                items.Remove(item.ID);
-            }
+            //// remove unused items
+            //List<codeEditor.Data.Item> removeItems = new List<codeEditor.Data.Item>();
+            //foreach (codeEditor.Data.Item item in items.Values)
+            //{
+            //    if (!ids.Contains(item.ID)) removeItems.Add(item);
+            //}
+            //foreach (codeEditor.Data.Item item in removeItems)
+            //{
+            //    items.Remove(item.ID);
+            //}
 
-            // add new items
-            foreach (string id in ids)
-            {
-                if (items.ContainsKey(id)) continue;
-                if (!Project.IsRegistered(id))
-                {
-                    System.Diagnostics.Debugger.Break();
-                    return;
-                }
-                codeEditor.Data.Item item = Project.GetRegisterdItem(id);
-                items.Add(item.ID, item);
-            }
+            //// add new items
+            //foreach (string id in ids)
+            //{
+            //    if (items.ContainsKey(id)) continue;
+            //    if (!Project.IsRegistered(id))
+            //    {
+            //        System.Diagnostics.Debugger.Break();
+            //        return;
+            //    }
+            //    codeEditor.Data.Item item = Project.GetRegisterdItem(id);
+            //    items.Add(item.ID, item);
+            //}
         }
 
-        public virtual void AfterKeyDown(System.Windows.Forms.KeyEventArgs e)
+        public new virtual void AfterKeyDown(System.Windows.Forms.KeyEventArgs e)
         {
             if (TclParsedDocument == null) return;
             switch (e.KeyCode)
@@ -171,20 +125,20 @@ namespace pluginTcl.Data
             }
         }
 
-        public virtual void AfterKeyPressed(System.Windows.Forms.KeyPressEventArgs e)
+        public new virtual void AfterKeyPressed(System.Windows.Forms.KeyPressEventArgs e)
         {
             if (TclParsedDocument == null) return;
         }
 
-        public virtual void BeforeKeyPressed(System.Windows.Forms.KeyPressEventArgs e)
+        public new virtual void BeforeKeyPressed(System.Windows.Forms.KeyPressEventArgs e)
         {
         }
 
-        public virtual void BeforeKeyDown(System.Windows.Forms.KeyEventArgs e)
+        public new virtual void BeforeKeyDown(System.Windows.Forms.KeyEventArgs e)
         {
         }
 
-        public List<codeEditor.CodeEditor.PopupItem> GetPopupItems(int editId, int index)
+        public new List<codeEditor.CodeEditor.PopupItem> GetPopupItems(int editId, int index)
         {
             if (TclParsedDocument == null) return null;
             if (TclParsedDocument.EditID != editId) return null;
@@ -196,14 +150,14 @@ namespace pluginTcl.Data
         }
 
 
-        public List<codeEditor.CodeEditor.ToolItem> GetToolItems(int index)
+        public new List<codeEditor.CodeEditor.ToolItem> GetToolItems(int index)
         {
             List<codeEditor.CodeEditor.ToolItem> toolItems = new List<codeEditor.CodeEditor.ToolItem>();
 //            toolItems.Add(new Tcl.Snippets.AlwaysFFSnippet());
             return toolItems;
         }
 
-        public List<codeEditor.CodeEditor.AutocompleteItem> GetAutoCompleteItems(int index, out string cantidateWord)
+        public new List<codeEditor.CodeEditor.AutocompleteItem> GetAutoCompleteItems(int index, out string cantidateWord)
         {
             cantidateWord = null;
 

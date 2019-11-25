@@ -8,7 +8,7 @@ namespace pluginTcl.Tcl
 {
     public class ParsedDocument : codeEditor.CodeEditor.ParsedDocument
     {
-        public ParsedDocument(codeEditor.Data.Project project, string itemID, int editID) : base(project, itemID, editID)
+        public ParsedDocument(Data.TclFile tclFile, int editID) : base(tclFile, editID)
         {
 
         }
@@ -19,23 +19,16 @@ namespace pluginTcl.Tcl
             {
                 // ProjectProperty is initialized in TclFile.ProjectProperty
                 // so ParsedDocument.ProjectPrperty must be called via TclFile.ProjectProperty
-                Data.TclFile tclFile = Project.GetRegisterdItem(ItemID) as Data.TclFile;
+                Data.TclFile tclFile = Item as Data.TclFile;
                 return tclFile.ProjectProperty;
             }
-        }
-
-        public override void Accept()
-        {
-            base.Accept();
-
-            Data.TclFile TclFile = Project.GetRegisterdItem(ItemID) as Data.TclFile;
         }
 
         public override void Dispose()
         {
             base.Dispose();
 
-            Data.TclFile TclFile = Project.GetRegisterdItem(ItemID) as Data.TclFile;
+            Data.TclFile TclFile = Item as Data.TclFile;
         }
 
         public int ErrorCount = 0;
@@ -113,7 +106,6 @@ namespace pluginTcl.Tcl
                 this.Index = index;
                 this.LineNo = lineNo;
                 this.Type = type;
-                this.ItemID = itemID;
                 this.Project = project;
             }
             public int LineNo { get; protected set; }

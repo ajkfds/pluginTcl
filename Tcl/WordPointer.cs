@@ -61,11 +61,11 @@ namespace pluginTcl.Tcl
             if (ParsedDocument is Tcl.ParsedDocument && (ParsedDocument as Tcl.ParsedDocument).ErrorCount < 100)
             {
                 int lineNo = Document.GetLineAt(index);
-                ParsedDocument.Messages.Add(new Tcl.ParsedDocument.Message(message, Tcl.ParsedDocument.Message.MessageType.Error, index, lineNo, length, ParsedDocument.ItemID, ParsedDocument.Project));
+//                ParsedDocument.Messages.Add(new Tcl.ParsedDocument.Message(message, Tcl.ParsedDocument.Message.MessageType.Error, index, lineNo, length, ParsedDocument.ItemID, ParsedDocument.Project));
             }
             else if (ParsedDocument is Tcl.ParsedDocument && (ParsedDocument as Tcl.ParsedDocument).ErrorCount == 100)
             {
-                ParsedDocument.Messages.Add(new Tcl.ParsedDocument.Message(">100 errors", Tcl.ParsedDocument.Message.MessageType.Error, 0, 0, 0, ParsedDocument.ItemID, ParsedDocument.Project));
+//                ParsedDocument.Messages.Add(new Tcl.ParsedDocument.Message(">100 errors", Tcl.ParsedDocument.Message.MessageType.Error, 0, 0, 0, ParsedDocument.ItemID, ParsedDocument.Project));
             }
 
             for (int i = index; i < index + length; i++)
@@ -83,11 +83,11 @@ namespace pluginTcl.Tcl
             if (ParsedDocument is Tcl.ParsedDocument && (ParsedDocument as Tcl.ParsedDocument).ErrorCount < 100)
             {
                 int lineNo = Document.GetLineAt(index);
-                ParsedDocument.Messages.Add(new Tcl.ParsedDocument.Message(message, Tcl.ParsedDocument.Message.MessageType.Error, index, lineNo, length, ParsedDocument.ItemID, ParsedDocument.Project));
+//                ParsedDocument.Messages.Add(new Tcl.ParsedDocument.Message(message, Tcl.ParsedDocument.Message.MessageType.Error, index, lineNo, length, ParsedDocument.ItemID, ParsedDocument.Project));
             }
             else if (ParsedDocument is Tcl.ParsedDocument && (ParsedDocument as Tcl.ParsedDocument).ErrorCount == 100)
             {
-                ParsedDocument.Messages.Add(new Tcl.ParsedDocument.Message(">100 errors", Tcl.ParsedDocument.Message.MessageType.Error, 0, 0, 0, ParsedDocument.ItemID, ParsedDocument.Project));
+//                ParsedDocument.Messages.Add(new Tcl.ParsedDocument.Message(">100 errors", Tcl.ParsedDocument.Message.MessageType.Error, 0, 0, 0, ParsedDocument.ItemID, ParsedDocument.Project));
             }
 
             if (fromReference.Document == Document)
@@ -114,11 +114,11 @@ namespace pluginTcl.Tcl
             if (ParsedDocument is Tcl.ParsedDocument && (ParsedDocument as Tcl.ParsedDocument).WarningCount < 100)
             {
                 int lineNo = Document.GetLineAt(index);
-                ParsedDocument.Messages.Add(new Tcl.ParsedDocument.Message(message, Tcl.ParsedDocument.Message.MessageType.Warning, index, lineNo, length, ParsedDocument.ItemID, ParsedDocument.Project));
+//               ParsedDocument.Messages.Add(new Tcl.ParsedDocument.Message(message, Tcl.ParsedDocument.Message.MessageType.Warning, index, lineNo, length, ParsedDocument.ItemID, ParsedDocument.Project));
             }
             else if (ParsedDocument is Tcl.ParsedDocument && (ParsedDocument as Tcl.ParsedDocument).WarningCount == 100)
             {
-                ParsedDocument.Messages.Add(new Tcl.ParsedDocument.Message(">100 warnings", Tcl.ParsedDocument.Message.MessageType.Warning, 0, 0, 0, ParsedDocument.ItemID, ParsedDocument.Project));
+//                ParsedDocument.Messages.Add(new Tcl.ParsedDocument.Message(">100 warnings", Tcl.ParsedDocument.Message.MessageType.Warning, 0, 0, 0, ParsedDocument.ItemID, ParsedDocument.Project));
             }
 
             for (int i = index; i < index + length; i++)
@@ -135,10 +135,10 @@ namespace pluginTcl.Tcl
             if (ParsedDocument is Tcl.ParsedDocument && (ParsedDocument as Tcl.ParsedDocument).WarningCount < 100)
             {
                 int lineNo = Document.GetLineAt(index);
-                ParsedDocument.Messages.Add(new Tcl.ParsedDocument.Message(message, Tcl.ParsedDocument.Message.MessageType.Warning, index, lineNo, length, ParsedDocument.ItemID, ParsedDocument.Project));
+//                ParsedDocument.Messages.Add(new Tcl.ParsedDocument.Message(message, Tcl.ParsedDocument.Message.MessageType.Warning, index, lineNo, length, ParsedDocument.ItemID, ParsedDocument.Project));
             }else if (ParsedDocument is Tcl.ParsedDocument && (ParsedDocument as Tcl.ParsedDocument).WarningCount == 100)
             {
-                ParsedDocument.Messages.Add(new Tcl.ParsedDocument.Message(">100 warnings", Tcl.ParsedDocument.Message.MessageType.Warning, 0, 0, 0, ParsedDocument.ItemID, ParsedDocument.Project));
+//                ParsedDocument.Messages.Add(new Tcl.ParsedDocument.Message(">100 warnings", Tcl.ParsedDocument.Message.MessageType.Warning, 0, 0, 0, ParsedDocument.ItemID, ParsedDocument.Project));
             }
 
             if (fromReference.Document == Document)

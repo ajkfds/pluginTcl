@@ -9,10 +9,10 @@ namespace pluginTcl.Parser
 {
     public class TclParser : codeEditor.CodeEditor.DocumentParser
     {
-        public TclParser(codeEditor.CodeEditor.CodeDocument document, string id, codeEditor.Data.Project project, codeEditor.CodeEditor.DocumentParser.ParseModeEnum parseMode) : base(document, id, project,parseMode)
+        public TclParser( Data.TclFile tclFile, codeEditor.CodeEditor.DocumentParser.ParseModeEnum parseMode) : base(tclFile,parseMode)
         {
-            parsedDocument = new Tcl.ParsedDocument(project, id, document.EditID);
-            word = new Tcl.WordScanner(this.document, parsedDocument,false);
+              parsedDocument = new Tcl.ParsedDocument(tclFile, document.EditID);
+              word = new Tcl.WordScanner(this.document, parsedDocument,false);
         }
 
         public Tcl.WordScanner word;

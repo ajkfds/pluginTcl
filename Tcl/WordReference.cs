@@ -26,7 +26,7 @@ namespace pluginTcl.Tcl
             if (ParsedDocument == null) return;
             int lineNo = Document.GetLineAt(Index);
 
-            ParsedDocument.Messages.Add(new Tcl.ParsedDocument.Message(message, Tcl.ParsedDocument.Message.MessageType.Error, Index, lineNo, Length, ParsedDocument.ItemID, ParsedDocument.Project));
+//            ParsedDocument.Messages.Add(new Tcl.ParsedDocument.Message(message, Tcl.ParsedDocument.Message.MessageType.Error, Index, lineNo, Length, ParsedDocument.ItemID, ParsedDocument.Project));
             for (int i = Index; i < Index + Length; i++)
             {
                 Document.SetMarkAt(i, 0);
@@ -38,7 +38,7 @@ namespace pluginTcl.Tcl
             if (ParsedDocument == null) return;
             int lineNo = Document.GetLineAt(Index);
 
-            ParsedDocument.Messages.Add(new Tcl.ParsedDocument.Message(message, Tcl.ParsedDocument.Message.MessageType.Warning, Index, lineNo, Length, ParsedDocument.ItemID, ParsedDocument.Project));
+//            ParsedDocument.Messages.Add(new Tcl.ParsedDocument.Message(message, Tcl.ParsedDocument.Message.MessageType.Warning, Index, lineNo, Length, ParsedDocument.ItemID, ParsedDocument.Project));
             for (int i = Index; i < Index + Length; i++)
             {
                 Document.SetMarkAt(i, 1);

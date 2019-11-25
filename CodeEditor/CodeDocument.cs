@@ -8,6 +8,8 @@ namespace pluginTcl.CodeEditor
 {
     public class CodeDocument : codeEditor.CodeEditor.CodeDocument
     {
+        public CodeDocument(Data.TclFile tclFile) : base(tclFile) { }
+
         // get word boundery for editor word selection
 
         public override void GetWord(int index, out int headIndex, out int length)

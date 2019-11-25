@@ -9,19 +9,19 @@ namespace pluginTcl.NavigatePanel
 {
     public class TclFileNode : codeEditor.NavigatePanel.FileNode
     {
-        public TclFileNode(string ID, codeEditor.Data.Project project) : base(ID, project)
+        public TclFileNode(Data.TclFile tclFile, codeEditor.Data.Project project) : base(tclFile)
         {
 
         }
 
-        public codeEditor.Data.ITextFile ITextFile
+        public codeEditor.Data.TextFile TextFile
         {
-            get { return Project.GetRegisterdItem(ID) as codeEditor.Data.ITextFile; }
+            get { return Item as codeEditor.Data.TextFile; }
         }
 
         public virtual Data.TclFile TclFile
         {
-            get { return Project.GetRegisterdItem(ID) as Data.TclFile; }
+            get { return Item as Data.TclFile; }
         }
 
         public override string Text
@@ -53,7 +53,7 @@ namespace pluginTcl.NavigatePanel
 
         public override void Selected()
         {
-            codeEditor.Controller.CodeEditor.SetTextFile(ITextFile);
+            codeEditor.Controller.CodeEditor.SetTextFile(TextFile);
         }
 
         public override void Update()
@@ -67,29 +67,29 @@ namespace pluginTcl.NavigatePanel
             }
 
             List<codeEditor.NavigatePanel.NavigatePanelNode> removeNodes = new List<codeEditor.NavigatePanel.NavigatePanelNode>();
-            foreach (codeEditor.NavigatePanel.NavigatePanelNode node in TreeNodes)
-            {
-                if (currentDataIds.Contains(node.ID))
-                {
-                    currentDataIds.Remove(node.ID);
-                }
-                else
-                {
-                    removeNodes.Add(node);
-                }
-            }
+            //foreach (codeEditor.NavigatePanel.NavigatePanelNode node in TreeNodes)
+            //{
+            //    if (currentDataIds.Contains(node.ID))
+            //    {
+            //        currentDataIds.Remove(node.ID);
+            //    }
+            //    else
+            //    {
+            //        removeNodes.Add(node);
+            //    }
+            //}
 
             foreach (codeEditor.NavigatePanel.NavigatePanelNode nodes in removeNodes)
             {
                 TreeNodes.Remove(nodes);
             }
 
-            foreach (string id in currentDataIds)
-            {
-                codeEditor.Data.Item item = Project.GetRegisterdItem(id);
-                if (item == null) continue;
-                TreeNodes.Add(item.CreateNode());
-            }
+            //foreach (string id in currentDataIds)
+            //{
+            //    codeEditor.Data.Item item = Project.GetRegisterdItem(id);
+            //    if (item == null) continue;
+            //    TreeNodes.Add(item.CreateNode());
+            //}
         }
 
     }
