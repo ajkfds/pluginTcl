@@ -19,7 +19,7 @@ namespace pluginTcl
 
         private static System.Drawing.Color[] colorPallet = new Color[16]
         {
-                System.Drawing.Color.DimGray,                   // default
+                System.Drawing.Color.FromArgb(212,212,212),                   // default
                 System.Drawing.Color.LightGray,                 // inactivated
                 System.Drawing.Color.DarkGray,                  // 2
                 System.Drawing.Color.Crimson,                   // variable-heavy
