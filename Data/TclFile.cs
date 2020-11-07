@@ -31,7 +31,7 @@ namespace pluginTcl.Data
             {
                 fileItem.Name = relativePath;
             }
-            fileItem.ParseRequested = true;
+//            fileItem.ParseRequested = true;
 
             //project.RegisterProjectItem(fileItem);
             return fileItem;
