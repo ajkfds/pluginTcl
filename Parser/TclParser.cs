@@ -11,7 +11,7 @@ namespace pluginTcl.Parser
     {
         public TclParser( Data.TclFile tclFile, codeEditor.CodeEditor.DocumentParser.ParseModeEnum parseMode) : base(tclFile,parseMode)
         {
-              parsedDocument = new Tcl.ParsedDocument(tclFile, document.EditID);
+              parsedDocument = new Tcl.ParsedDocument(tclFile, document.Version);
               word = new Tcl.WordScanner(this.document, parsedDocument,false);
         }
 

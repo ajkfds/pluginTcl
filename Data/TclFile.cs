@@ -54,7 +54,7 @@ namespace pluginTcl.Data
         }
 
 
-        public new ajkControls.CodeDrawStyle DrawStyle
+        public new ajkControls.CodeTextbox.CodeDrawStyle DrawStyle
         {
             get
             {
@@ -138,10 +138,10 @@ namespace pluginTcl.Data
         {
         }
 
-        public new List<codeEditor.CodeEditor.PopupItem> GetPopupItems(int editId, int index)
+        public new List<codeEditor.CodeEditor.PopupItem> GetPopupItems(ulong version, int index)
         {
             if (TclParsedDocument == null) return null;
-            if (TclParsedDocument.EditID != editId) return null;
+            if (TclParsedDocument.EditID != version) return null;
 
             int headIndex, length;
             CodeDocument.GetWord(index, out headIndex, out length);

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace pluginTcl
 {
-    public class CodeDrawStyle : ajkControls.CodeDrawStyle
+    public class CodeDrawStyle : ajkControls.CodeTextbox.CodeDrawStyle
     {
         public override System.Drawing.Color[] ColorPallet
         {
@@ -79,20 +79,20 @@ namespace pluginTcl
             }
         }
 
-        public override ajkControls.CodeTextbox.MarkStyleEnum[] MarkStyle
+        public override ajkControls.CodeTextbox.CodeTextbox.MarkStyleEnum[] MarkStyle
         {
             get
             {
-                return new ajkControls.CodeTextbox.MarkStyleEnum[8]
+                return new ajkControls.CodeTextbox.CodeTextbox.MarkStyleEnum[8]
                     {
-                        ajkControls.CodeTextbox.MarkStyleEnum.wave,    // 0
-                        ajkControls.CodeTextbox.MarkStyleEnum.wave,    // 1
-                        ajkControls.CodeTextbox.MarkStyleEnum.underLine,
-                        ajkControls.CodeTextbox.MarkStyleEnum.underLine,
-                        ajkControls.CodeTextbox.MarkStyleEnum.underLine,
-                        ajkControls.CodeTextbox.MarkStyleEnum.underLine,
-                        ajkControls.CodeTextbox.MarkStyleEnum.underLine,
-                        ajkControls.CodeTextbox.MarkStyleEnum.underLine
+                        ajkControls.CodeTextbox.CodeTextbox.MarkStyleEnum.wave,    // 0
+                        ajkControls.CodeTextbox.CodeTextbox.MarkStyleEnum.wave,    // 1
+                        ajkControls.CodeTextbox.CodeTextbox.MarkStyleEnum.underLine,
+                        ajkControls.CodeTextbox.CodeTextbox.MarkStyleEnum.underLine,
+                        ajkControls.CodeTextbox.CodeTextbox.MarkStyleEnum.underLine,
+                        ajkControls.CodeTextbox.CodeTextbox.MarkStyleEnum.underLine,
+                        ajkControls.CodeTextbox.CodeTextbox.MarkStyleEnum.underLine,
+                        ajkControls.CodeTextbox.CodeTextbox.MarkStyleEnum.underLine
                     };
             }
         }

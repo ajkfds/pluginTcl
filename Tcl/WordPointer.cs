@@ -210,7 +210,7 @@ namespace pluginTcl.Tcl
             return Document.GetCharAt(index + wordIndex);
         }
 
-        public static void FetchNext(ajkControls.Document document,ref int index, out int length, out int nextIndex)
+        public static void FetchNext(ajkControls.CodeTextbox.Document document,ref int index, out int length, out int nextIndex)
         {
             if(document.GetCharAt(index) == '\n')
             {
