@@ -10,7 +10,7 @@ namespace pluginTcl.Data
 {
     public class TclFile : codeEditor.Data.TextFile
     {
-        public static TclFile Create(string relativePath, codeEditor.Data.Project project)
+        public static new TclFile Create(string relativePath, codeEditor.Data.Project project)
         {
             //string id = GetID(relativePath, project);
             //if (project.IsRegistered(id))
@@ -141,7 +141,7 @@ namespace pluginTcl.Data
         public new List<codeEditor.CodeEditor.PopupItem> GetPopupItems(ulong version, int index)
         {
             if (TclParsedDocument == null) return null;
-            if (TclParsedDocument.EditID != version) return null;
+            if (TclParsedDocument.Version != version) return null;
 
             int headIndex, length;
             CodeDocument.GetWord(index, out headIndex, out length);
