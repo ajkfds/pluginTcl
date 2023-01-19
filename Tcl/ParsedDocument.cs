@@ -8,7 +8,7 @@ namespace pluginTcl.Tcl
 {
     public class ParsedDocument : codeEditor.CodeEditor.ParsedDocument
     {
-        public ParsedDocument(Data.TclFile tclFile, ulong version) : base(tclFile, version)
+        public ParsedDocument(Data.TclFile tclFile, ulong version, codeEditor.CodeEditor.DocumentParser.ParseModeEnum parseMode) : base(tclFile, version,parseMode)
         {
 
         }

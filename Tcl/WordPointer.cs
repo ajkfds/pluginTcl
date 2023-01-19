@@ -68,10 +68,11 @@ namespace pluginTcl.Tcl
 //                ParsedDocument.Messages.Add(new Tcl.ParsedDocument.Message(">100 errors", Tcl.ParsedDocument.Message.MessageType.Error, 0, 0, 0, ParsedDocument.ItemID, ParsedDocument.Project));
             }
 
-            for (int i = index; i < index + length; i++)
-            {
-                Document.SetMarkAt(i, 0);
-            }
+            Document.SetMarkAt(index, length, 0);
+            //for (int i = index; i < index + length; i++)
+            //{
+            //    Document.SetMarkAt(i, 0);
+            //}
 
             if (ParsedDocument is Tcl.ParsedDocument) (ParsedDocument as Tcl.ParsedDocument).ErrorCount++;
         }
@@ -92,17 +93,19 @@ namespace pluginTcl.Tcl
 
             if (fromReference.Document == Document)
             {
-                for (int i = fromReference.Index; i < index + length; i++)
-                {
-                    Document.SetMarkAt(i, 0);
-                }
+                Document.SetMarkAt(fromReference.Index, length, 0);
+                //for (int i = fromReference.Index; i < index + length; i++)
+                //{
+                //    Document.SetMarkAt(i, 0);
+                //}
             }
             else
             {
-                for (int i = index; i < index + length; i++)
-                {
-                    Document.SetMarkAt(i, 0);
-                }
+                Document.SetMarkAt(index,length, 0);
+                //for (int i = index; i < index + length; i++)
+                //{
+                //    Document.SetMarkAt(i, 0);
+                //}
             }
             if (ParsedDocument is Tcl.ParsedDocument) (ParsedDocument as Tcl.ParsedDocument).ErrorCount++;
         }
