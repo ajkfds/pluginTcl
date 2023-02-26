@@ -62,7 +62,7 @@ namespace pluginTcl.Data
             }
         }
 
-        public override codeEditor.NavigatePanel.NavigatePanelNode CreateNode()
+        protected override codeEditor.NavigatePanel.NavigatePanelNode createNode()
         {
             return new NavigatePanel.TclFileNode(this, Project);
         }
