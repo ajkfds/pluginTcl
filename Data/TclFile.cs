@@ -49,7 +49,7 @@ namespace pluginTcl.Data
         {
             get
             {
-                return Project.GetProjectProperty(Plugin.StaticID) as ProjectProperty;
+                return Project.ProjectProperties[Plugin.StaticID] as ProjectProperty;
             }
         }
 
