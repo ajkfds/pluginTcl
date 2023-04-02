@@ -36,7 +36,6 @@ namespace pluginTcl.Data
             //project.RegisterProjectItem(fileItem);
             return fileItem;
         }
-        private volatile bool parseRequested = false;
         public Tcl.ParsedDocument TclParsedDocument
         {
             get
