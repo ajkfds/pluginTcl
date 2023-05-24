@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using ajkControls.Primitive;
 
 namespace pluginTcl.NavigatePanel
 {
@@ -29,10 +30,10 @@ namespace pluginTcl.NavigatePanel
             get { return FileItem.Name; }
         }
 
-        private static ajkControls.IconImage icon = new ajkControls.IconImage(Properties.Resources.tcl);
+        private static IconImage icon = new IconImage(Properties.Resources.tcl);
         public override void DrawNode(Graphics graphics, int x, int y, Font font, Color color, Color backgroundColor, Color selectedColor, int lineHeight, bool selected)
         {
-            graphics.DrawImage(icon.GetImage(lineHeight, ajkControls.IconImage.ColorStyle.White), new Point(x, y));
+            graphics.DrawImage(icon.GetImage(lineHeight, IconImage.ColorStyle.White), new Point(x, y));
             Color bgColor = backgroundColor;
             if (selected) bgColor = selectedColor;
             System.Windows.Forms.TextRenderer.DrawText(
@@ -47,7 +48,7 @@ namespace pluginTcl.NavigatePanel
 
             if(TclFile != null && TclFile.ParsedDocument != null && TclFile.TclParsedDocument.ErrorCount != 0)
             {
-                graphics.DrawImage(Global.Icons.Exclamation.GetImage(lineHeight, ajkControls.IconImage.ColorStyle.Red), new Point(x, y));
+                graphics.DrawImage(Global.Icons.Exclamation.GetImage(lineHeight, IconImage.ColorStyle.Red), new Point(x, y));
             }
         }
 

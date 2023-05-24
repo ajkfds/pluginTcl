@@ -16,7 +16,7 @@ namespace pluginTcl
 
 //        public Tcl.Snippets.Setup SnippetSetup = new Tcl.Snippets.Setup();
 
-        public override void SaveSetup(ajkControls.JsonWriter writer)
+        public override void SaveSetup(ajkControls.Json.JsonWriter writer)
         {
         }
 
